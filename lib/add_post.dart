@@ -378,10 +378,10 @@ SizedBox(
                                   'category': valuechoose,
                                   'price': price.text,
                                   'kind': kind.text,
+                                   'prof':currentUser.email,
                                   'user': {
                                     'uid': currentUser.uid,
                                     'email': currentUser.email,
-
                                   }
                                 });
 

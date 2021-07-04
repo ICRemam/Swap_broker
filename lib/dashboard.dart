@@ -5,6 +5,7 @@ import 'package:fire99/chat/search4.dart';
 import 'package:fire99/chat1.dart';
 import 'package:fire99/new1.dart';
 import 'package:fire99/posts.dart';
+import 'package:fire99/profile.dart';
 import 'package:fire99/save2.dart';
 import 'package:fire99/sms.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -90,11 +91,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
 
             RaisedButton(
-                child: Text('show screen'),
-                onPressed:(){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => new1()));
+                child: Text('profile'),
+                onPressed:() async {
+                  final user = FirebaseAuth.instance.currentUser;
+                  final userData = await Firestore.instance.collection('users').doc(user.uid).get();
+                  String ud=userData['email'];
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => profile(ud)));
                 }
-
             ),
 
             RaisedButton(

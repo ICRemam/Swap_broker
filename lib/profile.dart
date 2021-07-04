@@ -27,12 +27,17 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 import 'actions.dart';
 import 'login.dart';
 
-class Posts2 extends StatefulWidget {
+class profile extends StatefulWidget {
+
+  final prof;
+
+  profile(this.prof);
+
   @override
   _Posts2 createState() => _Posts2();
 }
 
-class _Posts2 extends State<Posts2> {
+class _Posts2 extends State<profile> {
   String allposts;
 
   String v;
@@ -173,46 +178,22 @@ class _Posts2 extends State<Posts2> {
         child: Column(
             children: [
 
+              Container(
+               child: Text("Your Products",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),)
+              ),
               SizedBox(
                 height:16,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
-                child: TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
 
-                    hintText:"ex : camera , t shirt , mobile",
-                    prefixIcon: InkWell(child: Icon(Icons.search),
-                      onTap:(){
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return cs(_searchController.text.toLowerCase());
-                            }));
-                        //   ),
-                      },
-                    ),
-
-                  ),
-                ),
-              ),
               SizedBox(
                 width:10,
               ) ,
 
-
-
-
-
-
               Flexible(
-
                 child: Expanded(
-
                   child: StreamBuilder(
                       stream:
-                      Firestore.instance.collection('posts5').where("category",isEqualTo:"sports")
+                      Firestore.instance.collection('posts5').where("prof",isEqualTo:widget.prof)
                       //.orderBy("img",descending:true )
                           .snapshots(),
                       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -226,12 +207,7 @@ class _Posts2 extends State<Posts2> {
                                 itemCount: snapshot.data.documents.length,
                                 itemBuilder: (context, index) {
                                   DocumentSnapshot posts = snapshot.data.documents[index];
-
                                   // (profile.imgUrl == null) ? AssetImage('images/user-avatar.png') : NetworkImage(profile.imgUrl)
-
-
-
-
                                   return Column(
                                     children: <Widget>[
                                       Container(
@@ -247,10 +223,9 @@ class _Posts2 extends State<Posts2> {
                                               child:
                                               Image.network(posts.data()['img'],
                                                   fit: BoxFit.fill),
-
                                             ),
                                           ),
-                                          onTap: () {
+                                         /* onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(builder: (context) {
@@ -263,7 +238,7 @@ class _Posts2 extends State<Posts2> {
                                                 );
                                               }),
                                             );
-                                          },
+                                          },*/
                                         ),
                                       ),
                                       Container(
@@ -289,7 +264,7 @@ class _Posts2 extends State<Posts2> {
               SizedBox(
                 height:30,
               ),
-              CurvedNavigationBar(
+             /* CurvedNavigationBar(
 
                   color:Colors.lightBlueAccent,
                   backgroundColor:Colors.white,
@@ -312,7 +287,7 @@ class _Posts2 extends State<Posts2> {
                           }));
                     }
                   }
-              )
+              )*/
 
             ]),
       ),
