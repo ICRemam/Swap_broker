@@ -11,6 +11,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class MessgaeBubble2 extends StatefulWidget {
 
+  /*final mob;
+  final location;
+  final time;*/
   final product2;
   final img2;
   final String name;
@@ -22,7 +25,10 @@ class MessgaeBubble2 extends StatefulWidget {
 
 
 
-   MessgaeBubble2(this.name,this.owner,this.sender,this.des,this.product, this.product2,this.img,this.img2);
+   MessgaeBubble2(
+     //  this.mob,this.location,this.time,
+
+       this.name,this.owner,this.sender,this.des,this.product, this.product2,this.img,this.img2);
 
   @override
   _MessgaeBubbleState createState() => _MessgaeBubbleState();
@@ -38,19 +44,19 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
   String refuse ="Refused";
   bool press = true;
   SharedPreferences prefs ;
-  String ok="ok";
+  String ok="SHOW DETAILS";
   @override
   void initState() {
     super.initState();
     //getData();
     if(widget.des=='your order is accepted')
     {
-      accept="OK";
+      accept="SHOW DETAILS";
       refuse=" ";
     }
     if(widget.des=='your order is refused')
     {
-      accept="ok";
+      accept="show details";
       refuse=" ";
     }
   }
@@ -109,7 +115,7 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
                       style:TextStyle(color:Colors.black,fontSize:20,fontWeight:FontWeight.w900),
                     ),
                     Text(
-                      " product :  "+ widget.name ,
+                      " product :  "+ widget.product ,
                       style:TextStyle(color:Colors.black,fontSize:20,fontWeight:FontWeight.w900),
                     ),
 
@@ -146,7 +152,7 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
 
 
 
-                          if(accept!='OK'){
+                          if(accept!='SHOW DETAILS'){
                           var currentUser =
                               FirebaseAuth.instance.currentUser;
                           final user = FirebaseAuth.instance.currentUser;
@@ -155,7 +161,10 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return accept2(widget.owner,widget.sender,widget.product,widget.img,widget.product2,widget.img2);
+
+                                return accept2
+                                  (widget.owner,widget.sender,
+                                    widget.product,widget.img,widget.product2,widget.img2);
                               }));
 
                           /*Firestore.instance.collection('order').document()
@@ -175,10 +184,37 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
 
 
                           else{
+
+                        /*    var currentUser =
+                                FirebaseAuth.instance.currentUser;
+                            Firestore.instance.collection('save the deal').document()
+                                .setData({
+                              'location':" ",
+                              'img': widget.img,
+                              'img2':widget.img2,
+                              'curent':currentUser.email,
+                              'product': widget.product,
+                              'product2': widget.product2,
+                              'time':" ",
+                              'mob': " ",
+                              'user': {
+                                'uid': currentUser.uid,
+                                'email': currentUser.email,
+                              }
+                            });
+
+    Firestore.instance.collection('chat').where("product2", isEqualTo:widget.product2).get().then((snapshot){
+    snapshot.docs.last.reference.delete();
+     });*/
+
+
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
-                                  return showdetails(widget.img,widget.img2,widget.product,widget.product2);
+                                  return showdetails(
+                                      "your order is accepted",
+                                      widget.img,
+                                      widget.img2,widget.product,widget.product2);
                                 }));
                            /* Firestore.instance.collection('chat').where("name", isEqualTo:widget.name).get().then((snapshot){
                               snapshot.docs.last.reference.delete();*/

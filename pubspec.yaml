@@ -35,6 +35,8 @@ dependencies:
   firebase_analytics: ^6.2.0
   image_picker: ^0.6.7+14
   path: ^1.7.0
+  whatsapp_share: ^1.0.6
+  url_launcher: ^5.7.0
   shared_preferences: ^0.5.12+4
   carousel_pro: ^1.0.0
   google_sign_in:

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fire99/P3.dart';
@@ -24,6 +23,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'actions.dart';
 import 'login.dart';
 
@@ -45,6 +45,8 @@ class _Posts2 extends State<save2> {
   Future resultsLoaded;
   List _allResults = [];
   List _resultsList = [];
+  String _whatsapp ='';
+
 
   // val date = Calendar.getInstance().time;
 
@@ -297,6 +299,9 @@ class _Posts2 extends State<save2> {
                                                     child:Text('chat',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
                                                     onPressed:(){
 
+                                                      sendWhatsApp('2'+posts.data()['mob'],'hello i am using swap broker app and want to make a deal with you');
+
+
                                                 })
                                               ],
                                             ),
@@ -362,5 +367,23 @@ class _Posts2 extends State<save2> {
 
 
     );
+  }
+  sendWhatsApp(String phone,String msg)async{
+
+    String url(){
+      if(Platform.isAndroid){
+        return 'whatsapp://send?phone=$phone&text=$msg';
+      //  return 'whatsapp://wa.me/$phone/?text=${Uri.parse(msg)}';
+      }
+     else{
+        return 'whatsapp://send?phone=$phone&text=$msg';
+      //  return 'whatsapp://send?$phone=phone&text=$msg';
+     //   return 'whatsapp://wa.me/$phone&text=$msg';
+      }
+    }
+
+    await canLaunch(url())?launch(url()) : ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text('there is no whats app in your device')));
+
+
   }
 }

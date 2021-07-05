@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fire99/P3.dart';
@@ -24,6 +23,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'action88.dart';
 import 'actions.dart';
 import 'login.dart';
 
@@ -178,8 +178,11 @@ class _Posts2 extends State<profile> {
         child: Column(
             children: [
 
+              SizedBox(
+                height:16,
+              ),
               Container(
-               child: Text("Your Products",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),)
+               child: Text(" My Products",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),)
               ),
               SizedBox(
                 height:16,
@@ -225,11 +228,11 @@ class _Posts2 extends State<profile> {
                                                   fit: BoxFit.fill),
                                             ),
                                           ),
-                                         /* onTap: () {
+                                          onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(builder: (context) {
-                                                return Action99(
+                                                return Action88(
                                                   posts['name'],
                                                   posts['des'],
                                                   posts['price'],
@@ -238,7 +241,7 @@ class _Posts2 extends State<profile> {
                                                 );
                                               }),
                                             );
-                                          },*/
+                                          },
                                         ),
                                       ),
                                       Container(

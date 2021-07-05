@@ -70,6 +70,10 @@ class _MessagesState extends State<Messages2> {
 
                 child: MessgaeBubble2(
 
+                /*  docs[index]['mob']??"x",
+                  docs[index]['location']??"x",
+                  docs[index]['time']??"x",*/
+
                   docs[index]['name'],
                   docs[index]['owner'],
                   docs[index]['user']['email'],

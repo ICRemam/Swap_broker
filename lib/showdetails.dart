@@ -11,11 +11,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'add_post.dart';
 import 'login.dart';
 
 class showdetails extends StatefulWidget{
+  final dss;
   final img;
   final img2;
   final product;
@@ -23,7 +25,7 @@ class showdetails extends StatefulWidget{
 
 
 
-  showdetails(this.img, this.img2, this.product, this.product2);
+  showdetails(this.dss,this.img, this.img2, this.product, this.product2);
 
   @override
   _Action_State createState() => _Action_State();
@@ -120,7 +122,7 @@ class _Action_State extends State<showdetails> {
                     child: StreamBuilder(
                         stream:
                         Firestore.instance.collection('chat')
-                       .where("product",isEqualTo:widget.product)
+                       .where("des",isEqualTo:widget.dss)
                          //   .orderBy("img",descending:true )
                             .snapshots(),
                         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -136,10 +138,6 @@ class _Action_State extends State<showdetails> {
                                     DocumentSnapshot posts = snapshot.data.documents[index];
 
                                     // (profile.imgUrl == null) ? AssetImage('images/user-avatar.png') : NetworkImage(profile.imgUrl)
-
-
-
-
                                     return Column(
                                       children: <Widget>[
                                         Container(
@@ -246,6 +244,39 @@ class _Action_State extends State<showdetails> {
                                              ],
 
                                            ),
+
+
+                                           Row(
+                                             mainAxisAlignment: MainAxisAlignment.center,
+                                             children: [
+                                               //  SizedBox(width: 20.0/3),
+
+
+                                               FlatButton.icon(onPressed: () {
+
+                                                 sendWhatsApp('2'+posts.data()['mob'],'hello i am using swap broker app and want to make a deal with you');
+
+                                               },
+                                                 icon: Icon(Icons.messenger_rounded, color: Colors.greenAccent,size:32,),
+                                                 height: 12,
+                                                 // width:50,
+
+                                                 label: Text(" chatting " , style: TextStyle(color: Colors.green , fontSize: 21,fontStyle:FontStyle.italic),
+                                                 ),
+                                               ),
+
+                                             ],
+
+                                           ),
+
+
+
+
+
+
+
+
+
                                          ]
                                        )
                                       /*  Container(
@@ -311,6 +342,24 @@ class _Action_State extends State<showdetails> {
 
 
     );
+
+  }
+  sendWhatsApp(String phone,String msg)async{
+
+    String url(){
+      if(Platform.isAndroid){
+        return 'whatsapp://send?phone=$phone&text=$msg';
+        //  return 'whatsapp://wa.me/$phone/?text=${Uri.parse(msg)}';
+      }
+      else{
+        return 'whatsapp://send?phone=$phone&text=$msg';
+        //  return 'whatsapp://send?$phone=phone&text=$msg';
+        //   return 'whatsapp://wa.me/$phone&text=$msg';
+      }
+    }
+
+    await canLaunch(url())?launch(url()) : ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text('there is no whats app in your device')));
+
 
   }
 }
