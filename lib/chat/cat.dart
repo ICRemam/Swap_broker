@@ -23,11 +23,11 @@ class cat extends StatelessWidget {
              decoration: BoxDecoration(
                  gradient: LinearGradient(colors: [
                    // Colors.white,
-                   Colors.white,
+                   Colors.grey[850],
                   // Colors.cyanAccent,
 
                   // Colors.lightBlueAccent,
-                   Colors.white,
+                   Colors.grey[850],
                  ])),
              child: ListView(
                children:<Widget> [
@@ -41,31 +41,24 @@ class cat extends StatelessWidget {
                      decoration: BoxDecoration(
                          gradient: LinearGradient(colors: [
                            // Colors.white,
-                           Colors.white,
+                           Colors.grey[850],
                           // Colors.lightBlueAccent,
 
                           // Colors.lightBlueAccent,
-                           Colors.white,
+                           Colors.grey[850],
                          ])),
                      height:60,
                      child: Column(
                        children: [
-                         Center(child: Row(
-                           children: [
-                             Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:24)),
-                             Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:24)),
-                             Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:24)),
 
-                           ],
-                         )),
                          SizedBox(
                            height:4,
                          ),
-                         Center(child: Text("Select Category",style:TextStyle(color:Colors.black,fontSize:20,fontWeight:FontWeight.bold))),
+                         Center(child: Text("Select Category",style:TextStyle(color:Colors.white,fontSize:24,fontWeight:FontWeight.w700))),
                        ],
                      )),
 
-                 Center(child: Text("~~~~~~~~~",style:TextStyle(color:Colors.red,fontSize:24,fontStyle:FontStyle.italic))),
+                // Center(child: Text("~~~~~~~~~",style:TextStyle(color:Colors.red,fontSize:24,fontStyle:FontStyle.italic))),
                  SizedBox(
                    height:10,
                  ),
@@ -74,7 +67,7 @@ class cat extends StatelessWidget {
                    height:100,
                    child: InkWell(
                      child: Card(
-                       color:Colors.lightBlueAccent,
+                       color:Colors.red,
                        child:ListView(
                          scrollDirection: Axis.horizontal,
                          children:<Widget>[
@@ -104,7 +97,7 @@ class cat extends StatelessWidget {
                    height:100,
                    child: InkWell(
                      child: Card(
-                         color:Colors.lightBlueAccent,
+                         color:Colors.red,
                          child:ListView(
                            scrollDirection: Axis.horizontal,
                            children:<Widget>[
@@ -134,7 +127,7 @@ class cat extends StatelessWidget {
                    height:100,
                    child: InkWell(
                      child: Card(
-                         color:Colors.lightBlueAccent,
+                         color:Colors.red,
                          child:ListView(
                            scrollDirection: Axis.horizontal,
                            children:<Widget>[
@@ -166,7 +159,7 @@ class cat extends StatelessWidget {
                    height:100,
                    child: InkWell(
                      child: Card(
-                         color:Colors.lightBlueAccent,
+                         color:Colors.red,
                          child:ListView(
                            scrollDirection: Axis.horizontal,
                            children:<Widget>[
@@ -199,7 +192,7 @@ class cat extends StatelessWidget {
                    height:100,
                    child: InkWell(
                      child: Card(
-                         color:Colors.lightBlueAccent,
+                         color:Colors.red,
                          child:ListView(
                            scrollDirection: Axis.horizontal,
                            children:<Widget>[

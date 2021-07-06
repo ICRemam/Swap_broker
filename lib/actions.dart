@@ -100,7 +100,7 @@ class _Action_State extends State<Action99> {
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
 
                 decoration: BoxDecoration(
-                    color: Colors.grey[850],
+                    color: Colors.grey[900],
                    // color:Colors.lightBlueAccent,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(50),
@@ -120,7 +120,7 @@ class _Action_State extends State<Action99> {
                           children: [
                             Container(
                               height: size.width * 0.75,
-                              width: size.width * 0.75,
+                              width: size.height * 0.52,
                               decoration: BoxDecoration(
                                 color: Colors.grey[850],
                                shape: BoxShape.circle,

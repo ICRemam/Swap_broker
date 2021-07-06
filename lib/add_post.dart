@@ -142,7 +142,7 @@ class _AddPostState extends State<AddPost> {
         body:
         Container(
             padding: EdgeInsets.all(10),
-
+             color:Colors.grey[850],
             child:
             Form(
                 key: _formkey,
@@ -156,7 +156,7 @@ class _AddPostState extends State<AddPost> {
 
 
                       GestureDetector(
-                          child: Icon(Icons.add_photo_alternate,size: 40,),
+                          child: Icon(Icons.add_photo_alternate,size: 40,color:Colors.red),
                           onTap: pickImage
                       ),
                       SizedBox(
@@ -164,7 +164,7 @@ class _AddPostState extends State<AddPost> {
                       ),
 
                       CircleAvatar(
-                        backgroundColor:Colors.lightBlueAccent,
+                        backgroundColor:Colors.white,
                         backgroundImage:
                         _image == null ? null : FileImage(_image),
                         radius: 80,
@@ -173,7 +173,7 @@ class _AddPostState extends State<AddPost> {
                         width: 20,
                       ),
                       GestureDetector(
-                        child: Icon(Icons.clear,size: 40,),
+                        child: Icon(Icons.clear,size: 40,color:Colors.red),
                         onTap: clearr,
                       ),
                       /*
@@ -215,12 +215,12 @@ SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        controller: name,
+                        controller: name,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                         decoration: InputDecoration(
-                            hintText: 'Product Name',
+                            hintText: 'Product Name',hintStyle:TextStyle(color:Colors.white,fontSize:21,fontWeight:FontWeight.w500),
 
                             border:OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                              borderSide: const BorderSide(color: Colors.grey, width: 2.0),
                               borderRadius: BorderRadius.circular(25.0),
 
                             )
@@ -242,12 +242,12 @@ SizedBox(
                       ),
 
                       TextFormField(
-                        controller: des,
+                        controller: des,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                         decoration: InputDecoration(
-                            hintText: 'Description',
+                            hintText: 'Description',hintStyle:TextStyle(color:Colors.white,fontSize:21,fontWeight:FontWeight.w500),
                             border:OutlineInputBorder(
 
-                              borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                              borderSide: const BorderSide(color: Colors.grey, width: 2.0),
                               borderRadius: BorderRadius.circular(60.0),
 
                             )
@@ -271,16 +271,16 @@ SizedBox(
                             ,borderRadius: BorderRadius.circular(45)),
                         child:   DropdownButton(
 
-                          hint: Text("Select Class"),
+                          hint: Text("Select Class",style:TextStyle(color:Colors.white,fontSize:21,fontWeight:FontWeight.w500),),
 
-                          icon: Icon(Icons.arrow_drop_down),
+                          icon: Icon(Icons.arrow_drop_down,color:Colors.red),
 
                           iconSize: 36,
 
                           isExpanded: true,
                           underline: SizedBox(),
 
-                          value: valuechoose2,
+                          value: valuechoose2,style:TextStyle(color:Colors.red,fontSize:17,fontWeight:FontWeight.w900),
                           onChanged:(newvalue)
                           {
                             setState(() {
@@ -316,16 +316,16 @@ SizedBox(
                             ,borderRadius: BorderRadius.circular(25)),
                         child:   DropdownButton(
 
-                          hint: Text("Select Category"),
+                          hint: Text("Select Category",style:TextStyle(color:Colors.white,fontSize:21,fontWeight:FontWeight.w500),),
 
-                          icon: Icon(Icons.arrow_drop_down),
+                          icon: Icon(Icons.arrow_drop_down,color:Colors.red),
 
                           iconSize: 36,
 
                           isExpanded: true,
                           underline: SizedBox(),
 
-                          value: valuechoose,
+                          value: valuechoose,style:TextStyle(color:Colors.red,fontSize:17,fontWeight:FontWeight.w900),
                           onChanged:(newvalue)
                           {
                             setState(() {
@@ -355,14 +355,13 @@ SizedBox(
                       Container(
                         width:200,
                         child: RaisedButton(
-                            color: Colors.lightBlueAccent,
+                            color: Colors.white,
 
                             shape: StadiumBorder(),
                             splashColor: Colors.red,
                             child: Text(
                               'Share Post',
-
-                              style: TextStyle(color: Colors.white,fontSize:21),
+                              style: TextStyle(color: Colors.black,fontSize:21),
                             ),
 
                             onPressed: () async {

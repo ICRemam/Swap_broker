@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/se1.png
     - assets/r2.png
+    - assets/px.jpg
     - assets/aaa.jfif
     - assets/bbb.png
     - assets/ccc.jfif

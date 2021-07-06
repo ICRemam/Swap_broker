@@ -12,7 +12,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'add_post.dart';
 import 'login.dart';
 
@@ -103,7 +102,7 @@ class _Action_State extends State<Action88> {
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
 
                 decoration: BoxDecoration(
-                    color:Colors.white,
+                    color:Colors.grey[900],
                     // color:Colors.lightBlueAccent,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(50),
@@ -125,14 +124,14 @@ class _Action_State extends State<Action88> {
                               height: size.width * 0.75,
                               width: size.width * 0.75,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.grey[900],
                                 shape: BoxShape.circle,
                               ),
                             ),
                             Image.network(
                               widget.img,
                               height: size.width * 0.75,
-                              width: size.width * 0.78,
+                              width: size.height * 0.52,
                               fit: BoxFit.fill,
                             )
                           ],
@@ -142,15 +141,19 @@ class _Action_State extends State<Action88> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 40.0 / 2),
                       child: Text(
-                        widget.name , style: Theme.of(context).textTheme.headline6,
+                        widget.name , style:TextStyle(color:Colors.white,fontSize:24,fontWeight:FontWeight.w700),
                       ),
                     ),
-                    Text("class: " + widget.classe , style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,
+                    Text("class : " + widget.classe , style: TextStyle
+
+
+                      (
+                      fontSize:22, fontWeight: FontWeight.w600,
                       color: Colors.red,
                     ),
                     ),
                     Padding(padding: EdgeInsets.symmetric(vertical: 30.0 / 2 ),
-                      child: Text( widget.des , style: TextStyle(color: Color(0xFF747474)),
+                      child: Text( widget.des , style: TextStyle(color: Colors.white,fontSize:17),
                       ),
                     ),
                     SizedBox(height: 20.0,)
@@ -163,7 +166,7 @@ class _Action_State extends State<Action88> {
                 margin: EdgeInsets.all(24.0),
                 //  padding: EdgeInsets.symmetric(horizontal: 20.0,
                 //   vertical: 20.0 / 2),
-                decoration: BoxDecoration(color:Colors.lightBlueAccent,
+                decoration: BoxDecoration(color:Colors.white,
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: Center(
@@ -194,7 +197,7 @@ class _Action_State extends State<Action88> {
                         height: 12,
                         // width:50,
 
-                        label: Text(" delete " , style: TextStyle(color: Colors.white , fontSize: 21,fontStyle:FontStyle.italic),
+                        label: Text(" delete " , style: TextStyle(color: Colors.black , fontSize: 21,fontStyle:FontStyle.italic),
                         ),
                       ),
 

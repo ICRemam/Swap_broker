@@ -95,7 +95,7 @@ class _Action_State extends State<showdetails> {
       ),
 
         body: Container(
-          color:Colors.white,
+          color:Colors.grey[850],
           child: Column(
               children: [
 
@@ -160,7 +160,7 @@ class _Action_State extends State<showdetails> {
                                         Container(
                                           padding: EdgeInsets.all(10),
                                           height: 220,
-                                          color: Colors.white10,
+                                          color: Colors.grey[850],
                                           width: MediaQuery.of(context).size.width / 1.1,
                                           child: InkWell(
                                             child: Card(
@@ -201,8 +201,8 @@ class _Action_State extends State<showdetails> {
                                                SizedBox(
                                                  width:5,
                                                ),
-                                               Text('Location : ',style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
-                                               Text(posts.data()['location'] ??" ",style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
+                                               Text('Location : ',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
+                                               Text(posts.data()['location'] ??" ",style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
                                              ],
                                            ),
                                            Row(
@@ -210,8 +210,8 @@ class _Action_State extends State<showdetails> {
                                                SizedBox(
                                                  width:5,
                                                ),
-                                               Text('time to swap  : ',style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
-                                               Text(posts.data()['time'] ??" ",style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
+                                               Text('time to swap  : ',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
+                                               Text(posts.data()['time'] ??" ",style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
                                              ],
                                            ),
                                            Row(
@@ -219,8 +219,8 @@ class _Action_State extends State<showdetails> {
                                                SizedBox(
                                                  width:5,
                                                ),
-                                               Text('mobile number : ',style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
-                                               Text(posts.data()['mob'] ??" ",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),),
+                                               Text('mobile number : ',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
+                                               Text(posts.data()['mob'] ??" ",style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),),
                                              ],
                                            ),
                                            Row(
@@ -318,18 +318,18 @@ class _Action_State extends State<showdetails> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(top:40),
+                  padding: const EdgeInsets.only(top:10),
                   child: CurvedNavigationBar(
 
-                      color:Colors.lightBlueAccent,
-                      backgroundColor:Colors.white,
+                      color:Colors.white,
+                      backgroundColor:Colors.grey[850],
                       //buttonBackgroundColor:Colors.blue,
                       items:<Widget>[
 
-                        Icon(Icons.home,size:24,color:Colors.white),
-                        Icon(Icons.add_box,size:24,color:Colors.white),
-                        Icon(Icons.messenger_rounded,size:24,color:Colors.white),
-                        Icon(Icons.account_circle,size:24,color:Colors.white),
+                        Icon(Icons.home,size:24,color:Colors.black),
+                        Icon(Icons.add_box,size:24,color:Colors.red),
+                        Icon(Icons.messenger_rounded,size:24,color:Colors.blue),
+                        Icon(Icons.account_circle,size:24,color:Colors.purple),
                       ],
 
                       animationCurve:Curves.bounceOut,
@@ -359,9 +359,10 @@ class _Action_State extends State<showdetails> {
 
 
     );
-
   }
-  sendWhatsApp(String phone,String msg)async{
+
+
+sendWhatsApp(String phone,String msg)async{
 
     String url(){
       if(Platform.isAndroid){

@@ -191,7 +191,7 @@ class _Posts2 extends State<save2> {
 
       body:
       Container(
-        color:Colors.white,
+        color:Colors.grey[850],
         child: Column(
             children: [
 
@@ -231,15 +231,12 @@ class _Posts2 extends State<save2> {
 
                                   // (profile.imgUrl == null) ? AssetImage('images/user-avatar.png') : NetworkImage(profile.imgUrl)
 
-
-
-
                                   return Column(
                                     children: <Widget>[
                                       Container(
                                         padding: EdgeInsets.all(10),
                                         height: 220,
-                                        color: Colors.white10,
+                                        color: Colors.grey[850],
                                         width: MediaQuery.of(context).size.width / 1.1,
                                         child: InkWell(
                                           child: Card(
@@ -280,8 +277,8 @@ class _Posts2 extends State<save2> {
                                                 SizedBox(
                                                   width:5,
                                                 ),
-                                                Text('Location : ',style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
-                                                Text(posts.data()['location'] ??" ",style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
+                                                Text('Location : ',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
+                                                Text(posts.data()['location'] ??" ",style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
                                               ],
                                             ),
                                             Row(
@@ -289,8 +286,8 @@ class _Posts2 extends State<save2> {
                                                 SizedBox(
                                                   width:5,
                                                 ),
-                                                Text('time to swap  : ',style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
-                                                Text(posts.data()['time'] ??" ",style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
+                                                Text('time to swap  : ',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
+                                                Text(posts.data()['time'] ??" ",style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
                                               ],
                                             ),
                                             Row(
@@ -298,8 +295,8 @@ class _Posts2 extends State<save2> {
                                                 SizedBox(
                                                   width:5,
                                                 ),
-                                                Text('mobile number : ',style:TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w900),),
-                                                Text(posts.data()['mob'] ??" ",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),),
+                                                Text('mobile number : ',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
+                                                Text(posts.data()['mob'] ??" ",style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),),
                                               ],
                                             ),
                                             SizedBox(
@@ -368,38 +365,40 @@ class _Posts2 extends State<save2> {
                   ),
                 ),
               ),
-              SizedBox(
-                height:30,
-              ),
-              CurvedNavigationBar(
+              Padding(
+                padding: const EdgeInsets.only(top:10),
+                child: CurvedNavigationBar(
 
-                  color:Colors.lightBlueAccent,
-                  backgroundColor:Colors.white,
-                  //buttonBackgroundColor:Colors.blue,
-                  items:<Widget>[
+                    color:Colors.white,
+                    backgroundColor:Colors.grey[850],
+                    //buttonBackgroundColor:Colors.blue,
+                    items:<Widget>[
 
-                    Icon(Icons.home,size:24,color:Colors.white),
-                    Icon(Icons.add_box,size:24,color:Colors.white),
-                    Icon(Icons.account_circle,size:24,color:Colors.white),
-                  ],
+                      Icon(Icons.home,size:24,color:Colors.black),
+                      Icon(Icons.add_box,size:24,color:Colors.red),
+                      Icon(Icons.messenger_rounded,size:24,color:Colors.blue),
+                      Icon(Icons.account_circle,size:24,color:Colors.purple),
+                    ],
 
-                  animationCurve:Curves.bounceOut,
-                  onTap:(index){
-                    if(index==1)
-                    {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return AddPost();
-                          }));
+                    animationCurve:Curves.bounceOut,
+                    onTap:(index){
+
+                      if(index==1)
+                      {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return AddPost();
+                            }));
+
+
+                      }
+
+
                     }
 
 
-
-
-                  }
-
-
+                ),
               )
 
             ]),
@@ -408,8 +407,9 @@ class _Posts2 extends State<save2> {
 
 
     );
-  }
-  sendWhatsApp(String phone,String msg)async{
+}
+
+sendWhatsApp(String phone,String msg)async{
 
     String url(){
       if(Platform.isAndroid){

@@ -269,8 +269,8 @@ class _Posts2 extends State<profile> {
                                               style: TextStyle(color: Colors.white,fontSize:23,fontWeight:FontWeight.w600)),
                                           subtitle: Container(
                                               height:30,
-                                              child: Text("DESCRIPTION:" + posts.data()['des'],style: TextStyle(color: Colors.white,fontSize:23,fontWeight:FontWeight.w600),)),
-                                          trailing: Text(posts.data()['class'],style: TextStyle(color: Colors.white,fontSize:23,fontWeight:FontWeight.w600),)),
+                                              child: Text("" + posts.data()['des'],style: TextStyle(color: Colors.white,fontSize:20,fontWeight:FontWeight.w600),)),
+                                          trailing: Text(posts.data()['class'],style: TextStyle(color: Colors.red,fontSize:23,fontWeight:FontWeight.w600),)),
                                         ),
 
                                     ],
