@@ -39,44 +39,61 @@ class _Action_State extends State<showdetails> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor:Colors.white,
-        appBar: AppBar(
-            backgroundColor:Colors.white,
-            iconTheme: IconThemeData(color: Colors.black),
-            title:Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      // Colors.white,
-                      Colors.white,
-                      //Colors.lightBlueAccent,
+      appBar: AppBar(
+          backgroundColor:Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+          title:Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    // Colors.white,
+                    Colors.white,
+                    //Colors.lightBlueAccent,
 
-                      // Colors.lightBlueAccent,
-                      Colors.white,
-                    ])),
-                height:30,
-                child: Center(child: Row(
-                  children: [
-                    Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                    // Colors.lightBlueAccent,
+                    Colors.white,
+                  ])),
+              height:30,
+              child: Center(child: Row(
+                children: [
+                  Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
-                  ],
-                ))
+                ],
+              ))
+          ),
+          //backgroundColor: Colors.lightBlueAccent,
+          /*actions: <Widget>[
+            IconButton(
+                color:Colors.red,
+                icon: Icon(Icons.apps,size:34,),
+
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return cat2();
+                      }));
+
+                }),
+
+            SizedBox(
+                width:7
             ),
-            //backgroundColor: Colors.lightBlueAccent,
-            actions: <Widget>[
-              IconButton(
-                  color:Colors.cyanAccent,
-                  icon: Icon(Icons.filter_5_outlined,size:34,),
+            IconButton(
+                color:Colors.black,
+                icon: Icon(Icons.apps_sharp,size:34,),
 
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return cat();
-                        }));
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return cat();
+                      }));
+                })
+          ]*/
+      ),
 
-                  })]
-        ),
         body: Container(
           color:Colors.white,
           child: Column(

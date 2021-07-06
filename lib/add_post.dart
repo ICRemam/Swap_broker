@@ -23,7 +23,9 @@ class AddPost extends StatefulWidget {
 class _AddPostState extends State<AddPost> {
   //String imagepath;
   String valuechoose;
+  String valuechoose2;
   List listitem =["sports","tec","clothes","accessories","others"];
+  List listitem2=['A','B','C','D'];
   @override
   void initState() {
     super.initState();
@@ -98,27 +100,43 @@ class _AddPostState extends State<AddPost> {
                 height:30,
                 child: Center(child: Row(
                   children: [
-                    Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                    Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                    Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                    Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
                   ],
                 ))
             ),
             //backgroundColor: Colors.lightBlueAccent,
-            actions: <Widget>[
+           /* actions: <Widget>[
               IconButton(
-                  color:Colors.cyanAccent,
-                  icon: Icon(Icons.filter_5_outlined,size:34,),
+                  color:Colors.red,
+                  icon: Icon(Icons.apps,size:34,),
 
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) {
-                       //   return cat();
+                          return cat2();
                         }));
 
-                  })]
+                  }),
+
+              SizedBox(
+                  width:7
+              ),
+              IconButton(
+                  color:Colors.black,
+                  icon: Icon(Icons.apps_sharp,size:34,),
+
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return cat();
+                        }));
+                  })
+            ]*/
         ),
 
         body:
@@ -138,7 +156,7 @@ class _AddPostState extends State<AddPost> {
 
 
                       GestureDetector(
-                          child: Icon(Icons.camera_alt,size: 40,),
+                          child: Icon(Icons.add_photo_alternate,size: 40,),
                           onTap: pickImage
                       ),
                       SizedBox(
@@ -217,33 +235,12 @@ SizedBox(
 
 
                       ),
+
+
                       SizedBox(
-                        height: 5,
+                        height:15,
                       ),
-                      TextFormField(
-                        controller: price,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            hintText: 'Product Price',
-                            border:OutlineInputBorder(
 
-                              borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                              borderRadius: BorderRadius.circular(25.0),
-
-                            )
-
-
-
-                        ),
-                        validator: ( value) {
-                          if (value.isEmpty) {
-                            return 'Please Enter Product price ';
-                          }
-                        },
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
                       TextFormField(
                         controller: des,
                         decoration: InputDecoration(
@@ -251,7 +248,7 @@ SizedBox(
                             border:OutlineInputBorder(
 
                               borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                              borderRadius: BorderRadius.circular(25.0),
+                              borderRadius: BorderRadius.circular(60.0),
 
                             )
 
@@ -264,9 +261,54 @@ SizedBox(
                         },
                       ),
                       SizedBox(
-                        height: 5,
+                        height:15,
                       ),
 
+
+                      Container(
+                        padding: EdgeInsets.only(left:25,right:25),
+                        decoration:BoxDecoration(border: Border.all(color:Colors.grey,width:1)
+                            ,borderRadius: BorderRadius.circular(45)),
+                        child:   DropdownButton(
+
+                          hint: Text("Select Class"),
+
+                          icon: Icon(Icons.arrow_drop_down),
+
+                          iconSize: 36,
+
+                          isExpanded: true,
+                          underline: SizedBox(),
+
+                          value: valuechoose2,
+                          onChanged:(newvalue)
+                          {
+                            setState(() {
+                              valuechoose2=newvalue;
+                            });
+
+                          },
+
+                          items: listitem2.map((valueitem){
+
+                            return DropdownMenuItem(value: valueitem,
+
+                              child: Text(valueitem),
+
+
+                            );
+
+                          }).toList(),
+
+
+                        ),
+
+                      ),
+
+
+                      SizedBox(
+                          height:15
+                      ),
 
                       Container(
                         padding: EdgeInsets.only(left:25,right:25),
@@ -308,33 +350,7 @@ SizedBox(
 
                       ),
                       SizedBox(
-                        height: 5,
-                      ),
-
-                      TextFormField(
-                        controller: kind,
-                        decoration: InputDecoration(
-                            hintText: 'Kind: Mobile,Screen,Tshirt',
-
-                            border:OutlineInputBorder(
-
-                              borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                              borderRadius: BorderRadius.circular(25.0),
-
-                            )
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Enter Kind ';
-                          }
-
-                        },
-                      ),
-
-
-
-                      SizedBox(
-                        height: 10,
+                        height:15,
                       ),
                       Container(
                         width:200,
@@ -376,8 +392,9 @@ SizedBox(
                                   'img': _url.toString(),
                                   'des': des.text,
                                   'category': valuechoose,
-                                  'price': price.text,
-                                  'kind': kind.text,
+                                  'class':valuechoose2,
+                                 // 'price': price.text,
+                                 // 'kind': kind.text,
                                    'prof':currentUser.email,
                                   'user': {
                                     'uid': currentUser.uid,

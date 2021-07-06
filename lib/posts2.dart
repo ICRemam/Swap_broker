@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fire99/P3.dart';
 import 'package:fire99/add_post.dart';
+import 'package:fire99/cat2.dart';
 import 'package:fire99/chat/cat.dart';
 import 'package:fire99/chat/search4.dart';
 import 'package:fire99/new.dart';
@@ -141,9 +142,9 @@ class _Posts2 extends State<Posts2> {
               height:30,
               child: Center(child: Row(
                 children: [
-                  Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                  Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                  Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                  Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
                 ],
               ))
@@ -151,8 +152,24 @@ class _Posts2 extends State<Posts2> {
           //backgroundColor: Colors.lightBlueAccent,
           actions: <Widget>[
             IconButton(
-                color:Colors.cyanAccent,
-                icon: Icon(Icons.filter_5_outlined,size:34,),
+                color:Colors.red,
+                icon: Icon(Icons.apps,size:34,),
+
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return cat2();
+                      }));
+
+                }),
+
+            SizedBox(
+                width:7
+            ),
+            IconButton(
+                color:Colors.black,
+                icon: Icon(Icons.apps_sharp,size:34,),
 
                 onPressed: () {
                   Navigator.push(
@@ -161,7 +178,9 @@ class _Posts2 extends State<Posts2> {
                         return cat();
                       }));
 
-                })]
+                })
+
+          ]
       ),
 
 
@@ -169,7 +188,7 @@ class _Posts2 extends State<Posts2> {
 
       body:
       Container(
-        color:Colors.white,
+        color:Colors.grey[850],
         child: Column(
             children: [
 
@@ -237,7 +256,7 @@ class _Posts2 extends State<Posts2> {
                                       Container(
                                         padding: EdgeInsets.all(10),
                                         height: 280,
-                                        color: Colors.white10,
+                                        color:Colors.grey[850],
                                         width: MediaQuery.of(context).size.width / 1.1,
                                         child: InkWell(
                                           child: Card(
@@ -257,7 +276,7 @@ class _Posts2 extends State<Posts2> {
                                                 return Action99(
                                                   posts['name'],
                                                   posts['des'],
-                                                  posts['price'],
+                                                  posts['class'],
                                                   posts['img'],
                                                   posts['user']['email'],
                                                 );
@@ -271,11 +290,11 @@ class _Posts2 extends State<Posts2> {
                                         child: ListTile(
                                           // leading: Image.network(posts.data()['img']),
                                           title: Text(posts.data()['name'],
-                                              style: TextStyle(color: Colors.redAccent)),
+                                            style:TextStyle(color:Colors.white,fontSize:21,fontWeight:FontWeight.w700),),
                                           subtitle: Container(
                                               height:30,
-                                              child: Text("DESCRIPTION:" + posts.data()['des'])),
-                                          trailing: Text(posts.data()['price'] + "\$"),
+                                              child: Text("DESCRIPTION : " + posts.data()['des'],style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w500),)),
+                                          trailing: Text(" " + posts.data()['class'],style:TextStyle(color:Colors.red,fontSize:24,fontWeight:FontWeight.w500),),
                                         ),
                                       ),
                                     ],
@@ -286,38 +305,43 @@ class _Posts2 extends State<Posts2> {
                   ),
                 ),
               ),
-              SizedBox(
+             /* SizedBox(
                 height:30,
-              ),
-              CurvedNavigationBar(
+              ),*/
+              Padding(
+                padding: const EdgeInsets.only(top:10),
+                child: CurvedNavigationBar(
 
-                  color:Colors.lightBlueAccent,
-                  backgroundColor:Colors.white,
-                  //buttonBackgroundColor:Colors.blue,
-                  items:<Widget>[
+                    color:Colors.white,
+                    backgroundColor:Colors.grey[850],
+                    //buttonBackgroundColor:Colors.blue,
+                    items:<Widget>[
 
-                    Icon(Icons.home,size:24,color:Colors.white),
-                    Icon(Icons.add_box,size:24,color:Colors.white),
-                    Icon(Icons.account_circle,size:24,color:Colors.white),
-                  ],
+                      Icon(Icons.home,size:24,color:Colors.black),
+                      Icon(Icons.add_box,size:24,color:Colors.red),
+                      Icon(Icons.messenger_rounded,size:24,color:Colors.blue),
+                      Icon(Icons.account_circle,size:24,color:Colors.purple),
+                    ],
 
-                  animationCurve:Curves.bounceOut,
-                  onTap:(index){
-                    if(index==1)
-                    {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return AddPost();
-                          }));
+                    animationCurve:Curves.bounceOut,
+                    onTap:(index){
+
+                      if(index==1)
+                      {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return AddPost();
+                            }));
+
+
+                      }
+
+
                     }
 
 
-
-
-                  }
-
-
+                ),
               )
 
             ]),

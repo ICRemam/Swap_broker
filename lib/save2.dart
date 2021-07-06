@@ -30,7 +30,6 @@ import 'login.dart';
 class save2 extends StatefulWidget {
 
   final curent;
-
   save2(this.curent);
 
   @override
@@ -148,18 +147,34 @@ class _Posts2 extends State<save2> {
               height:30,
               child: Center(child: Row(
                 children: [
-                  Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                  Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                  Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                  Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
                 ],
               ))
           ),
           //backgroundColor: Colors.lightBlueAccent,
-          actions: <Widget>[
+         /* actions: <Widget>[
             IconButton(
-                color:Colors.cyanAccent,
-                icon: Icon(Icons.filter_5_outlined,size:34,),
+                color:Colors.red,
+                icon: Icon(Icons.apps,size:34,),
+
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return cat2();
+                      }));
+
+                }),
+
+            SizedBox(
+                width:7
+            ),
+            IconButton(
+                color:Colors.black,
+                icon: Icon(Icons.apps_sharp,size:34,),
 
                 onPressed: () {
                   Navigator.push(
@@ -167,8 +182,8 @@ class _Posts2 extends State<save2> {
                       MaterialPageRoute(builder: (context) {
                         return cat();
                       }));
-
-                })]
+                })
+          ]*/
       ),
 
 
@@ -189,14 +204,13 @@ class _Posts2 extends State<save2> {
               ) ,
 
 
-
-
+              Container(
+                child:Text('Sawpping Deals',style:TextStyle(color:Colors.white,fontSize:27,fontWeight:FontWeight.w500),)
+              ),
 
 
               Flexible(
-
                 child: Expanded(
-
                   child: StreamBuilder(
                       stream:
                       Firestore.instance.collection('save the deal')
@@ -288,21 +302,48 @@ class _Posts2 extends State<save2> {
                                                 Text(posts.data()['mob'] ??" ",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),),
                                               ],
                                             ),
+                                            SizedBox(
+                                              height:12
+                                            ),
                                             Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
+                                             mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 //  SizedBox(width: 20.0/3),
+                                               /* SizedBox(
+                                                  width:50,
+                                                ),*/
 
 
-                                                RaisedButton(
+                                                 SizedBox(
+                                                   width:10,
+                                                 ),
+                                                 InkWell(
+                                                   child: Container(
+                                                     width:100,
+                                                     child:Image.asset('assets/r2.png')
+                                                   ),
+                                                   onTap:(){
+                                                     sendWhatsApp('2'+posts.data()['mob'],'hello i am using swap broker app and want to make a deal with you');
+                                                   },
+                                                 ),
+                                                InkWell(
+                                                  child: Container(
+                                                    child:Text('Chat',style:TextStyle(color:Colors.lightGreen,fontSize:24,fontWeight:FontWeight.w500),),
+                                                  ),
+                                                  onTap:(){
+                                                    sendWhatsApp('2'+posts.data()['mob'],'hello i am using swap broker app and want to make a deal with you');
+                                                  },
+
+                                                )
+                                              /*  RaisedButton(
                                                   color:Colors.green,
-                                                    child:Text('chat',style:TextStyle(color:Colors.white,fontSize:22,fontWeight:FontWeight.w900),),
+
                                                     onPressed:(){
 
                                                       sendWhatsApp('2'+posts.data()['mob'],'hello i am using swap broker app and want to make a deal with you');
 
 
-                                                })
+                                                })*/
                                               ],
                                             ),
                                           ]

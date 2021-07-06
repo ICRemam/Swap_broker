@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fire99/cat2.dart';
 import 'package:fire99/chat/cat.dart';
 import 'package:fire99/posts.dart';
 import 'package:fire99/profile.dart';
@@ -18,12 +19,12 @@ import 'login.dart';
 class Action88 extends StatefulWidget{
   final name;
   final des;
-  final price;
+  final classe;
   final img;
   final owner;
 
 
-  Action88(this.name, this.des, this.price, this.img,this.owner
+  Action88(this.name, this.des, this.classe, this.img,this.owner
       );
 
   @override
@@ -54,17 +55,46 @@ class _Action_State extends State<Action88> {
                 height:30,
                 child: Center(child: Row(
                   children: [
-                    Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                    Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                    Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                    Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
                   ],
                 ))
             ),
             //backgroundColor: Colors.lightBlueAccent,
+            actions: <Widget>[
+              IconButton(
+                  color:Colors.red,
+                  icon: Icon(Icons.apps,size:34,),
 
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return cat2();
+                        }));
+
+                  }),
+
+              SizedBox(
+                  width:7
+              ),
+              IconButton(
+                  color:Colors.black,
+                  icon: Icon(Icons.apps_sharp,size:34,),
+
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return cat();
+                        }));
+                  })
+            ]
         ),
         body: Container(
+          color:Colors.grey[850],
           child: ListView(
             //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -115,7 +145,7 @@ class _Action_State extends State<Action88> {
                         widget.name , style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
-                    Text("Price: " + widget.price + "EGP", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,
+                    Text("class: " + widget.classe , style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,
                       color: Colors.red,
                     ),
                     ),

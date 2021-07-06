@@ -99,6 +99,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  fancy_drawer:
+    dependency: "direct main"
+    description:
+      name: fancy_drawer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   ffi:
     dependency: transitive
     description:
@@ -525,13 +532,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  whatsapp_share:
-    dependency: "direct main"
-    description:
-      name: whatsapp_share
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   win32:
     dependency: transitive
     description:

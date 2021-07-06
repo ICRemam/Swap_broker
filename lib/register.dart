@@ -15,7 +15,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.initState();
   }
 
-
   final _formkey = GlobalKey<FormState>();
 
   TextEditingController _emailcontroller = TextEditingController();

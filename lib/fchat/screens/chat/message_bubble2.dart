@@ -56,8 +56,8 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
     }
     if(widget.des=='your order is refused')
     {
-      accept="show details";
-      refuse=" ";
+      accept="";
+      refuse="ok and delete";
     }
   }
 
@@ -149,25 +149,23 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
                         color:Colors.deepPurple,
 
                         onPressed: () async {
+                          if (accept != 'SHOW DETAILS') {
+                            var currentUser =
+                                FirebaseAuth.instance.currentUser;
+                            final user = FirebaseAuth.instance.currentUser;
+                            final userData = await FirebaseFirestore.instance
+                                .collection('users').doc(user.uid).get();
+                            String ud = userData['email'];
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return accept2
+                                    (widget.owner, widget.sender,
+                                      widget.product, widget.img,
+                                      widget.product2, widget.img2);
+                                }));
 
-
-
-                          if(accept!='SHOW DETAILS'){
-                          var currentUser =
-                              FirebaseAuth.instance.currentUser;
-                          final user = FirebaseAuth.instance.currentUser;
-                          final userData = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
-                          String ud=userData['email'];
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-
-                                return accept2
-                                  (widget.owner,widget.sender,
-                                    widget.product,widget.img,widget.product2,widget.img2);
-                              }));
-
-                          /*Firestore.instance.collection('order').document()
+                            /*Firestore.instance.collection('order').document()
                               .setData({
                             'email': widget.email+"Accepted",
                             'money':widget.money+"Accepted",
@@ -175,37 +173,14 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
                           });*/
 
 
-
-                         /* Firestore.instance.collection('chat').where("email", isEqualTo:widget.email).get().then((snapshot){
+                            /* Firestore.instance.collection('chat').where("email", isEqualTo:widget.email).get().then((snapshot){
                             snapshot.docs.last.reference.delete();
 
                           });*/
-                        }
+                          }
 
 
-                          else{
-
-                        /*    var currentUser =
-                                FirebaseAuth.instance.currentUser;
-                            Firestore.instance.collection('save the deal').document()
-                                .setData({
-                              'location':" ",
-                              'img': widget.img,
-                              'img2':widget.img2,
-                              'curent':currentUser.email,
-                              'product': widget.product,
-                              'product2': widget.product2,
-                              'time':" ",
-                              'mob': " ",
-                              'user': {
-                                'uid': currentUser.uid,
-                                'email': currentUser.email,
-                              }
-                            });
-
-    Firestore.instance.collection('chat').where("product2", isEqualTo:widget.product2).get().then((snapshot){
-    snapshot.docs.last.reference.delete();
-     });*/
+                          else if (accept == 'SHOW DETAILS') {
 
 
                             Navigator.push(
@@ -214,52 +189,37 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
                                   return showdetails(
                                       "your order is accepted",
                                       widget.img,
-                                      widget.img2,widget.product,widget.product2);
+                                      widget.img2, widget.product,
+                                      widget.product2);
                                 }));
-                           /* Firestore.instance.collection('chat').where("name", isEqualTo:widget.name).get().then((snapshot){
+                            /* Firestore.instance.collection('chat').where("name", isEqualTo:widget.name).get().then((snapshot){
                               snapshot.docs.last.reference.delete();*/
-                           // });
+                            // });
                           }
 
-                          },
 
 
 
 
-
-
-
-
-                        /* Navigator.push(
+                          /* Navigator.push(
                                     context,
                                     MaterialPageRoute(builder: (context) {
                                       return Search4(widget.usname);
                                     }));*/
 
 
+                        },
+                      child:Text(accept,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),)
 
-                        child:Text(accept,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),)
-
-                    ),
+                        ),
 
                    RaisedButton(
                      color:Colors.deepOrange,
-                     onPressed:(){
+                     onPressed:()async{
       var currentUser =
           FirebaseAuth.instance.currentUser;
-      Firestore.instance.collection('chat').document()
+     await Firestore.instance.collection('chat').document()
 
-      /*'name':name.text,
-                       'product': name.text,
-                       'product2':widget.product2,
-                       'img2':widget.img2,
-                       'owner':widget.owner,
-                       'sender':currentUser.email,
-                       'img': _url.toString(),
-                       'des': des.text,
-                       'category': valuechoose,
-                       'price': price.text,
-                       'kind': kind.text,*/
           .setData({
         "x":"x",
         'product':widget.product,
@@ -286,10 +246,18 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
       Firestore.instance.collection('chat').where("name", isEqualTo:widget.name).get().then((snapshot){
         snapshot.docs.last.reference.delete();
       });
+
+                       if (refuse== 'ok and delete') {
+                       Firestore.instance.collection('chat').
+                       where("product2", isEqualTo: widget.product2)
+                           .get()
+                           .then((snapshot) {
+                       snapshot.docs.first.reference.delete();
+                       });
+                       }
     },
 
                        child:Text(refuse,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),)
-
 
                    )
 

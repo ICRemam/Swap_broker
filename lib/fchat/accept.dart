@@ -371,15 +371,6 @@ SizedBox(
                                 String ud=userData['email'];
 
 
-
-                            /*    'name':widget.name,
-                              'des': "your order is refused",
-                              'owner':widget.sender,
-                              'sender':widget.owner,
-                              'product':widget.name,
-                              'user': {
-                              'uid': currentUser.uid,
-                              'email': currentUser.email,*/
                                 FirebaseAuth.instance.currentUser;
 
                                 Firestore.instance.collection('chat').document()
@@ -403,10 +394,11 @@ SizedBox(
                                     'uid': user.uid,
                                     'email': user.email,
                                  //   'name':currentUser.toString(),
-
                                   }
                                 });
-
+                                Firestore.instance.collection('chat').where("name", isEqualTo:widget.name).get().then((snapshot){
+                                  snapshot.docs.first.reference.delete();
+                                });
                               }
                              /* final user = FirebaseAuth.instance.currentUser;
                               final userData = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();

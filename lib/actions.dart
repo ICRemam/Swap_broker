@@ -16,12 +16,12 @@ import 'login.dart';
 class Action99 extends StatefulWidget{
   final name;
   final des;
-  final price;
+  final classe;
   final img;
   final owner;
 
 
-  Action99(this.name, this.des, this.price, this.img,this.owner
+  Action99(this.name, this.des, this.classe, this.img,this.owner
       );
 
   @override
@@ -35,7 +35,7 @@ class _Action_State extends State<Action99> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor:Colors.white,
+        backgroundColor:Colors.grey[850],
         appBar: AppBar(
             backgroundColor:Colors.white,
             iconTheme: IconThemeData(color: Colors.black),
@@ -52,18 +52,34 @@ class _Action_State extends State<Action99> {
                 height:30,
                 child: Center(child: Row(
                   children: [
-                    Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                    Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                    Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                    Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
                   ],
                 ))
             ),
             //backgroundColor: Colors.lightBlueAccent,
-            actions: <Widget>[
+          /*  actions: <Widget>[
               IconButton(
-                  color:Colors.cyanAccent,
-                  icon: Icon(Icons.filter_5_outlined,size:34,),
+                  color:Colors.red,
+                  icon: Icon(Icons.apps,size:34,),
+
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return cat2();
+                        }));
+
+                  }),
+
+              SizedBox(
+                  width:7
+              ),
+              IconButton(
+                  color:Colors.black,
+                  icon: Icon(Icons.apps_sharp,size:34,),
 
                   onPressed: () {
                     Navigator.push(
@@ -71,10 +87,11 @@ class _Action_State extends State<Action99> {
                         MaterialPageRoute(builder: (context) {
                           return cat();
                         }));
-
-                  })]
+                  })
+            ]*/
         ),
         body: Container(
+          color:Colors.grey[850],
           child: ListView(
             //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -83,7 +100,7 @@ class _Action_State extends State<Action99> {
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
 
                 decoration: BoxDecoration(
-                    color:Colors.white,
+                    color: Colors.grey[850],
                    // color:Colors.lightBlueAccent,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(50),
@@ -105,7 +122,7 @@ class _Action_State extends State<Action99> {
                               height: size.width * 0.75,
                               width: size.width * 0.75,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.grey[850],
                                shape: BoxShape.circle,
                               ),
                             ),
@@ -122,15 +139,15 @@ class _Action_State extends State<Action99> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 40.0 / 2),
                       child: Text(
-                        widget.name , style: Theme.of(context).textTheme.headline6,
+                        widget.name ,  style: TextStyle(color:Colors.white,fontSize:22, fontWeight: FontWeight.w600),
                       ),
                     ),
-                    Text("Price: " + widget.price + "EGP", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,
-                      color: Colors.red,
+                    Text(" class :  " + widget.classe , style: TextStyle(color:Colors.white,fontSize:22, fontWeight: FontWeight.w600,
+
                     ),
                     ),
                     Padding(padding: EdgeInsets.symmetric(vertical: 30.0 / 2 ),
-                      child: Text( widget.des , style: TextStyle(color: Color(0xFF747474)),
+                      child: Text( widget.des , style: TextStyle(color: Colors.white,fontSize:22),
                       ),
                     ),
                     SizedBox(height: 20.0,)
@@ -143,8 +160,8 @@ class _Action_State extends State<Action99> {
                 margin: EdgeInsets.all(24.0),
               //  padding: EdgeInsets.symmetric(horizontal: 20.0,
                  //   vertical: 20.0 / 2),
-                decoration: BoxDecoration(color:Colors.lightBlueAccent,
-                  borderRadius: BorderRadius.circular(24),
+                decoration: BoxDecoration(color:Colors.white,
+                  borderRadius: BorderRadius.circular(28),
                 ),
                 child: Center(
                   child: Row(
@@ -166,7 +183,7 @@ class _Action_State extends State<Action99> {
                         height: 12,
                        // width:50,
 
-                        label: Text(" Start Swaping" , style: TextStyle(color: Colors.white , fontSize: 21,fontStyle:FontStyle.italic),
+                        label: Text(" Start Swaping" , style: TextStyle(color: Colors.black , fontSize: 21,fontStyle:FontStyle.italic),
                         ),
                       ),
 
