@@ -385,7 +385,6 @@ SizedBox(
 
                                 Firestore.instance.collection('posts5').document()
 
-
                                     .setData({
                                   'name': name.text,
                                   'img': _url.toString(),
