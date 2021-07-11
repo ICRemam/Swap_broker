@@ -9,6 +9,7 @@ import 'package:fire99/chat/cat.dart';
 import 'package:fire99/chat/search4.dart';
 import 'package:fire99/new.dart';
 import 'package:fire99/p2.dart';
+import 'package:fire99/profile.dart';
 import 'package:fire99/provider_widget.dart';
 import 'package:fire99/posts.dart';
 import 'package:fire99/posts2.dart';
@@ -26,6 +27,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 import 'actions.dart';
+import 'fchat/screens/chat_screen2.dart';
+import 'home.dart';
 import 'login.dart';
 
 class PostsScreen extends StatefulWidget {
@@ -305,41 +308,53 @@ class _PostsScreenState extends State<PostsScreen> {
                             ),
                           ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top:10),
-                  child: CurvedNavigationBar(
-
-                    color:Colors.white,
-                    backgroundColor:Colors.grey[850],
-                      //buttonBackgroundColor:Colors.blue,
-                        items:<Widget>[
-
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: CurvedNavigationBar(
+                        color: Colors.white,
+                        backgroundColor: Colors.black,
+                        //buttonBackgroundColor:Colors.blue,
+                        items: <Widget>[
                           Icon(Icons.home,size:24,color:Colors.black),
                           Icon(Icons.add_box,size:24,color:Colors.red),
                           Icon(Icons.messenger_rounded,size:24,color:Colors.blue),
                           Icon(Icons.account_circle,size:24,color:Colors.purple),
                         ],
-
-                      animationCurve:Curves.bounceOut,
-                      onTap:(index){
-
-                         if(index==1)
-                         {
-                           Navigator.push(
-                               context,
-                               MaterialPageRoute(builder: (context) {
-                             return AddPost();
-                           }));
-
-
-                      }
-
-
-                      }
+                        animationCurve: Curves.bounceOut,
+                        onTap: (index) async {
+                          final user = FirebaseAuth.instance.currentUser;
+                          final userData = await Firestore.instance
+                              .collection('users')
+                              .doc(user.uid)
+                              .get();
+                          String ud=userData['email'];
+                          if(index == 0) {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                                  return Home();
+                                }));
+                          }
 
 
-                    ),
-                )
+                          else  if (index == 1) {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                                  return AddPost();
+                                }));
+                          } else if (index == 2) {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                                  return ChatScreen2(ud);
+                                }));
+                          }
+                          else if (index == 3) {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                                  return profile(ud);
+                                }));
+                          }
+                        }),
+                  )
 
                 ]),
           ),

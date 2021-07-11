@@ -27,7 +27,7 @@ class _ChatScreenState extends State<ChatScreen2>
     super.initState();
 
 
-   /* final fbm=FirebaseMessaging();
+    /* final fbm=FirebaseMessaging();
     fbm.requestNotificationPermissions();
     fbm.configure(onMessage :(msg){
       print(msg);
@@ -50,45 +50,51 @@ class _ChatScreenState extends State<ChatScreen2>
     final userData = FirebaseFirestore.instance.collection('users').doc(user.uid).get();
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(41, 30, 83, 1),
-      appBar: AppBar(
-        title:
+      backgroundColor: Colors.grey[850],
+      appBar:  AppBar(
+        backgroundColor:Colors.white,
+        iconTheme: IconThemeData(color: Colors.black),
+        title:Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  // Colors.white,
+                  Colors.white,
+                  //Colors.lightBlueAccent,
 
-        Center(child: Row(
-          children: [
-            SizedBox(
-                width:40
-            ),
-            Text('   Fire cash', style: TextStyle(
-                color: Colors.white,fontWeight:FontWeight.w900,
-                fontStyle: FontStyle.italic,
-                fontSize: 20)),
-            Text('& guide', style: TextStyle(
-                color: Colors.white,fontWeight:FontWeight.w900,
-                fontStyle: FontStyle.italic,
-                fontSize: 20)),
-          ],
-        )),
-        backgroundColor:Colors.blue[900],
-        elevation: 6,
+                  // Colors.lightBlueAccent,
+                  Colors.white,
+                ])),
+            height:30,
+            child: Center(child: Row(
+              children: [
+                Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+
+              ],
+            ))
+        ),
+        //backgroundColor: Colors.lightBlueAccent,
+
+
 
       ),
 
       // .fromRGBO(41, 30, 80, 1),
 
-      drawer:SidebarPage(),
+      // drawer:SidebarPage(),
 
       body:Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
+          /* gradient: LinearGradient(colors: [
               Colors.blue,
                Colors.white,
 
-            ])),
+            ])*/),
         child: Column(
             children:[
 
-             /* Container(
+              /* Container(
                   width:310,
                   height:81,
                   child:NativeAdmob(
@@ -99,7 +105,7 @@ class _ChatScreenState extends State<ChatScreen2>
                   )
               ),*/
 
-              SizedBox(
+              /* SizedBox(
                 height:5,
               ),
               Text( "Notification",style:TextStyle(color:Colors.white,fontSize:24,fontWeight:FontWeight.w900),),
@@ -109,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen2>
 
               SizedBox(
                 height:5,
-              ),
+              ),*/
               Expanded(
                 child:
                 Container(child: Messages2(widget.owner)),

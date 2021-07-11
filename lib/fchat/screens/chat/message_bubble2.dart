@@ -11,9 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class MessgaeBubble2 extends StatefulWidget {
 
-  /*final mob;
-  final location;
-  final time;*/
   final product2;
   final img2;
   final String name;
@@ -84,7 +81,7 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
           children:<Widget>[
             Container(
               decoration:BoxDecoration(
-                color:Colors.pink,
+                color:Colors.grey[400],
                 //!widget.isMe ? Colors.lightBlueAccent[200]:
                 //Theme.of(context).accentColor,
                 borderRadius:BorderRadius.only(
@@ -108,15 +105,15 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
                   children:<Widget>[
                     Text(
                       " about :  "+ widget.des ,
-                      style:TextStyle(color:Colors.black,fontSize:20,fontWeight:FontWeight.w900),
+                      style:TextStyle(color:Colors.black,fontSize:16,fontWeight:FontWeight.w300),
                     ),
                     Text(
                       " sender : " + widget.sender,
-                      style:TextStyle(color:Colors.black,fontSize:20,fontWeight:FontWeight.w900),
+                      style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w300),
                     ),
                     Text(
                       " product :  "+ widget.product ,
-                      style:TextStyle(color:Colors.black,fontSize:20,fontWeight:FontWeight.w900),
+                      style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w300),
                     ),
 
                     Container(
@@ -146,7 +143,7 @@ class _MessgaeBubbleState extends State<MessgaeBubble2> {
                     ),*/
 
                     RaisedButton(
-                        color:Colors.deepPurple,
+                        color:Colors.red,
 
                         onPressed: () async {
                           if (accept != 'SHOW DETAILS') {

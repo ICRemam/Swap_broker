@@ -16,17 +16,12 @@ class cat2 extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-
           body:
           Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
-                  // Colors.white,
-                  Colors.black,
-                  // Colors.cyanAccent,
-
-                  // Colors.lightBlueAccent,
-                  Colors.black,
+                  Colors.grey[850],
+                  Colors.grey[850],
                 ])),
             child: ListView(
               children:<Widget> [
@@ -40,11 +35,11 @@ class cat2 extends StatelessWidget {
                     decoration: BoxDecoration(
                         gradient: LinearGradient(colors: [
                           // Colors.white,
-                          Colors.black,
+                          Colors.grey[850],
                           // Colors.lightBlueAccent,
 
                           // Colors.lightBlueAccent,
-                          Colors.black,
+                          Colors.grey[850],
                         ])),
                     height:60,
                     child: Column(
@@ -57,7 +52,7 @@ class cat2 extends StatelessWidget {
                       ],
                     )),
 
-              //  Center(child: Text("~~~~~~~~~",style:TextStyle(color:Colors.red,fontSize:24,fontStyle:FontStyle.italic))),
+                //  Center(child: Text("~~~~~~~~~",style:TextStyle(color:Colors.red,fontSize:24,fontStyle:FontStyle.italic))),
                 SizedBox(
                   height:10,
                 ),
@@ -66,18 +61,18 @@ class cat2 extends StatelessWidget {
                   height:100,
                   child: InkWell(
                     child: Card(
-                        color:Colors.black,
+                        color:Colors.red,
                         child:ListView(
                           scrollDirection: Axis.horizontal,
                           children:<Widget>[
                             SizedBox(
                               width:50,
                             ),
-                            Center(child: Text("A",style:TextStyle(color:Colors.white,fontSize:26,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
+                            Center(child: Text(" Class A",style:TextStyle(color:Colors.white,fontSize:26,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
                             SizedBox(
                               width:60,
                             ),
-                            Image.asset('assets/aaa.jfif'),
+
                           ],
                         )
                     ),
@@ -96,18 +91,18 @@ class cat2 extends StatelessWidget {
                   height:100,
                   child: InkWell(
                     child: Card(
-                        color:Colors.black,
+                        color:Colors.red,
                         child:ListView(
                           scrollDirection: Axis.horizontal,
                           children:<Widget>[
                             SizedBox(
                               width:50,
                             ),
-                            Center(child: Text("B",style:TextStyle(color:Colors.white,fontSize:28,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
+                            Center(child: Text(" Class B",style:TextStyle(color:Colors.white,fontSize:28,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
                             SizedBox(
                               width:60,
                             ),
-                            Image.asset('assets/bbb.png'),
+                            // Image.asset('assets/bbb.png'),
                           ],
                         )
                     ),
@@ -126,18 +121,18 @@ class cat2 extends StatelessWidget {
                   height:100,
                   child: InkWell(
                     child: Card(
-                        color:Colors.black,
+                        color:Colors.red,
                         child:ListView(
                           scrollDirection: Axis.horizontal,
                           children:<Widget>[
                             SizedBox(
                               width:50,
                             ),
-                            Center(child: Text("C",style:TextStyle(color:Colors.white,fontSize:28,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
+                            Center(child: Text("Class C",style:TextStyle(color:Colors.white,fontSize:28,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
                             SizedBox(
                               width:60,
                             ),
-                            Image.asset('assets/ccc.jfif'),
+                            // Image.asset('assets/ccc.jfif'),
                           ],
                         )
                     ),
@@ -158,18 +153,18 @@ class cat2 extends StatelessWidget {
                   height:100,
                   child: InkWell(
                     child: Card(
-                        color:Colors.black,
+                        color:Colors.red,
                         child:ListView(
                           scrollDirection: Axis.horizontal,
                           children:<Widget>[
                             SizedBox(
                               width:50,
                             ),
-                            Center(child: Text("D",style:TextStyle(color:Colors.white,fontSize:24,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
+                            Center(child: Text("Class D",style:TextStyle(color:Colors.white,fontSize:24,fontStyle:FontStyle.italic,fontWeight:FontWeight.bold))),
                             SizedBox(
                               width:60,
                             ),
-                            Image.asset('assets/ddd.jfif'),
+                           // Image.asset('assets/ddd.jfif'),
                           ],
                         )
                     ),

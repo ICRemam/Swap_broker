@@ -10,7 +10,7 @@ class RegisterScreen extends StatefulWidget{
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-    void initState()
+  void initState()
   {
     super.initState();
   }
@@ -33,7 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-  
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Register New Account'),
@@ -76,7 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   color: Colors.blue,
                   child: Text('Register New Account',style: TextStyle(color: Colors.white),),
                   onPressed: () async{
-                    
+
 
                     if(_formkey.currentState.validate()){
 
@@ -84,12 +84,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       await Firebase.initializeApp();
 
                       var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailcontroller.text, password: _passwordcontroller.text);
-                    
+
                       if(result != null)
                       {
 
-                       var userInfo = Firestore.instance.collection('users').document().setData({
-                         'email':result.user.email
+                        var userInfo = Firestore.instance.collection('users').document().setData({
+                          'email':result.user.email
                         });
 
                         Navigator.pushReplacement(

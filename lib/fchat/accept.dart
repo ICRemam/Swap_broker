@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fire99/fchat/screens/chat_screen2.dart';
+import 'package:fire99/posts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -95,48 +96,37 @@ class _AddPostState extends State<accept2> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor:Colors.white,
-            iconTheme: IconThemeData(color: Colors.black),
-            title:Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      // Colors.white,
-                      Colors.white,
-                      //Colors.lightBlueAccent,
+          backgroundColor:Colors.white,
+          iconTheme: IconThemeData(color: Colors.red),
+          title:Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    // Colors.white,
+                    Colors.white,
+                    //Colors.lightBlueAccent,
 
-                      // Colors.lightBlueAccent,
-                      Colors.white,
-                    ])),
-                height:30,
-                child: Center(child: Row(
-                  children: [
-                    Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                    Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                    // Colors.lightBlueAccent,
+                    Colors.white,
+                  ])),
+              height:30,
+              child: Center(child: Row(
+                children: [
+                  Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
-                  ],
-                ))
-            ),
-            //backgroundColor: Colors.lightBlueAccent,
-            actions: <Widget>[
-              IconButton(
-                  color:Colors.cyanAccent,
-                  icon: Icon(Icons.filter_5_outlined,size:34,),
+                ],
+              ))
+          ),
+          //backgroundColor: Colors.lightBlueAccent,
 
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          //   return cat();
-                        }));
-
-                  })]
         ),
 
         body:
         Container(
             padding: EdgeInsets.all(10),
 
+             color:Colors.grey[850],
             child:
             Form(
                 key: _formkey,
@@ -205,17 +195,17 @@ SizedBox(
 
                   Column(
                     children: <Widget>[
-                      Card(
-                        child:Text('All details')
-                      ),
+
+                      Text('All details',style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w700),),
+
                       SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        controller: location,
+                        controller: location,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                         decoration: InputDecoration(
                             hintText: 'location for swapping',
-
+                            hintStyle:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                             border:OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white, width: 2.0),
                               borderRadius: BorderRadius.circular(25.0),
@@ -235,10 +225,10 @@ SizedBox(
                         height: 5,
                       ),
                       TextFormField(
-                        controller: time,
+                        controller: time,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                            hintText: 'time for swapping',
+                            hintText: 'time for swapping',hintStyle:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                             border:OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white, width: 2.0),
                               borderRadius: BorderRadius.circular(25.0),
@@ -260,7 +250,7 @@ SizedBox(
                         controller:mob,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                            hintText: 'your mobile number',
+                            hintText: 'your mobile number',hintStyle:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                             border:OutlineInputBorder(
 
                               borderSide: const BorderSide(color: Colors.white, width: 2.0),
@@ -325,12 +315,11 @@ SizedBox(
                       ),
 
                       TextFormField(
-                        controller: notes,
+                        controller: notes,style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
                         decoration: InputDecoration(
-                            hintText: 'any notes you want',
+                            hintText: 'any notes you want',hintStyle:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),
 
                             border:OutlineInputBorder(
-
                               borderSide: const BorderSide(color: Colors.white, width: 2.0),
                               borderRadius: BorderRadius.circular(25.0),
 
@@ -352,14 +341,14 @@ SizedBox(
                       Container(
                         width:200,
                         child: RaisedButton(
-                            color: Colors.lightBlueAccent,
+                            color: Colors.white,
 
                             shape: StadiumBorder(),
                             splashColor: Colors.red,
                             child: Text(
                               'ok',
 
-                              style: TextStyle(color: Colors.white,fontSize:21),
+                              style: TextStyle(color: Colors.black,fontSize:21),
                             ),
 
                             onPressed: () async {
@@ -400,10 +389,19 @@ SizedBox(
                                   snapshot.docs.first.reference.delete();
                                 });
                               }
-                             /* final user = FirebaseAuth.instance.currentUser;
-                              final userData = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
-                              String ud=userData['email'];
-                              Navigator.push(context, MaterialPageRoute(builder: (context) =>ChatScreen2(ud)));*/
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => new AlertDialog(
+                                    title: new Text("Done",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),),
+                                    content: new Text("You Send the details ",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w300),),
+
+                                  ));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return PostsScreen();
+                                  }));
+
                             }),
 
 

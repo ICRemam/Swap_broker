@@ -133,13 +133,11 @@ class _Action_State extends State<showdetails> {
 
 
                 Flexible(
-
                   child: Expanded(
-
                     child: StreamBuilder(
                         stream:
                         Firestore.instance.collection('chat')
-                       .where("des",isEqualTo:widget.dss)
+                       .where("des",isEqualTo:"your order is accepted")
                          //   .orderBy("img",descending:true )
                             .snapshots(),
                         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -249,6 +247,7 @@ class _Action_State extends State<showdetails> {
                                                    }
                                                  });
 
+
                                                },
                                                  icon: Icon(Icons.adjust_sharp, color: Colors.redAccent,size:32,),
                                                  height: 12,
@@ -270,9 +269,7 @@ class _Action_State extends State<showdetails> {
 
 
                                                FlatButton.icon(onPressed: () {
-
                                                  sendWhatsApp('2'+posts.data()['mob'],'hello i am using swap broker app and want to make a deal with you');
-
                                                },
                                                  icon: Icon(Icons.messenger_rounded, color: Colors.greenAccent,size:32,),
                                                  height: 12,

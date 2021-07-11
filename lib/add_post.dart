@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fire99/posts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -381,26 +382,34 @@ SizedBox(
                                 _url = await (await task.onComplete)
                                     .ref
                                     .getDownloadURL();
-
-
                                 Firestore.instance.collection('posts5').document()
-
                                     .setData({
                                   'name': name.text,
                                   'img': _url.toString(),
                                   'des': des.text,
                                   'category': valuechoose,
                                   'class':valuechoose2,
-                                 // 'price': price.text,
-                                 // 'kind': kind.text,
+                                  'price': "/",
+                                 'kind': "/",
                                    'prof':currentUser.email,
                                   'user': {
                                     'uid': currentUser.uid,
                                     'email': currentUser.email,
                                   }
                                 });
-
                               }
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => new AlertDialog(
+                                    title: new Text("Done",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),),
+                                    content: new Text("You Shared Item Succesufully",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w300),),
+
+                                  ));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return PostsScreen();
+                                  }));
                             }),
                       ),
                       /* RaisedButton(

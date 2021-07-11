@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fire99/add_post.dart';
+import 'package:fire99/cat2.dart';
 import 'package:fire99/posts2.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -31,6 +32,7 @@ class cs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Colors.grey[850],
       appBar: AppBar(
           backgroundColor:Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
@@ -47,9 +49,9 @@ class cs extends StatelessWidget {
               height:30,
               child: Center(child: Row(
                 children: [
-                  Text("       Sw",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
-                  Text("ap",style:TextStyle(color:Colors.black,fontWeight:FontWeight.bold,fontSize:21)),
-                  Text("  Broker",style:TextStyle(color:Colors.lightBlue,fontWeight:FontWeight.bold,fontSize:21)),
+                  Text("   Sw",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("ap",style:TextStyle(color:Colors.red,fontWeight:FontWeight.w600,fontSize:21)),
+                  Text("  Broker",style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600,fontSize:21)),
 
                 ],
               ))
@@ -57,8 +59,24 @@ class cs extends StatelessWidget {
           //backgroundColor: Colors.lightBlueAccent,
           actions: <Widget>[
             IconButton(
-                color:Colors.cyanAccent,
-                icon: Icon(Icons.filter_5_outlined,size:34,),
+                color:Colors.red,
+                icon: Icon(Icons.apps,size:34,),
+
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return cat2();
+                      }));
+
+                }),
+
+            SizedBox(
+                width:7
+            ),
+            IconButton(
+                color:Colors.black,
+                icon: Icon(Icons.apps_sharp,size:34,),
 
                 onPressed: () {
                   Navigator.push(
@@ -67,7 +85,9 @@ class cs extends StatelessWidget {
                         return cat();
                       }));
 
-                })]
+                })
+
+          ]
       ),
 
       drawer: SidebarPage(),
@@ -81,6 +101,7 @@ class cs extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width / 1,
               height: 20,
+              color:Colors.grey[850],
               // child: Row(children: <Widget>[
 
 
@@ -110,7 +131,7 @@ class cs extends StatelessWidget {
                                     Container(
                                       padding: EdgeInsets.all(10),
                                       height: 220,
-                                      color: Colors.white10,
+                                      color: Colors.grey[850],
                                       width: MediaQuery.of(context).size.width / 1.1,
                                       child: InkWell(
                                         child: Card(
@@ -139,8 +160,8 @@ class cs extends StatelessWidget {
                                         leading: Image.network(posts['img']),
                                         title: Text(posts['name'],
                                             style: TextStyle(color: Colors.redAccent)),
-                                        subtitle: Text("DESCRIPTION:" + posts['des']),
-                                        trailing: Text(posts['price'] + "\$"),
+                                        subtitle: Text("DESCRIPTION:" + posts['des'],style:TextStyle(color:Colors.white,fontSize:17,fontWeight:FontWeight.w900),),
+                                       // trailing: Text(posts['price'] + "\$"),
                                       ),
                                     ),
                                   ],
@@ -151,14 +172,14 @@ class cs extends StatelessWidget {
             ),
             CurvedNavigationBar(
 
-                color:Colors.lightBlueAccent,
-                backgroundColor:Colors.white,
+                color:Colors.white,
+                backgroundColor:Colors.grey[850],
                 //buttonBackgroundColor:Colors.blue,
                 items:<Widget>[
 
-                  Icon(Icons.home,size:24,color:Colors.white),
-                  Icon(Icons.add_box,size:24,color:Colors.white),
-                  Icon(Icons.account_circle,size:24,color:Colors.white),
+                  Icon(Icons.home,size:24,color:Colors.red),
+                  Icon(Icons.add_box,size:24,color:Colors.red),
+                  Icon(Icons.account_circle,size:24,color:Colors.red),
                 ],
 
                 animationCurve:Curves.bounceOut,

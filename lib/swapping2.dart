@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fire99/posts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -383,6 +384,19 @@ SizedBox(
                                 });
 
                               }
+
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => new AlertDialog(
+                                    title: new Text("Done",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w900),),
+                                    content: new Text("You Send Swapping deal",style:TextStyle(color:Colors.black,fontSize:17,fontWeight:FontWeight.w300),),
+
+                                  ));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return PostsScreen();
+                                  }));
                              /* final user = FirebaseAuth.instance.currentUser;
                               final userData = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
                               String ud=userData['email'];*/

@@ -136,7 +136,7 @@ Widget buildResultCard(data) {
               child: Text(data['name'],
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.red,
                   fontSize: 20.0,
                 ),
               )

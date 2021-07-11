@@ -5,19 +5,16 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fire99/add_post.dart';
 import 'package:fire99/cat2.dart';
 import 'package:fire99/chat/cat.dart';
+import 'package:fire99/fchat/screens/chat_screen2.dart';
+import 'package:fire99/home.dart';
 import 'package:fire99/new.dart';
 import 'package:fire99/posts2.dart';
+import 'package:fire99/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'actions.dart';
-import 'chat/search4.dart';
-import 'login.dart';
-import 'package:fire99/posts.dart';
-import 'package:fire99/posts3.dart';
-import 'package:fire99/posts4.dart';
-import 'package:fire99/posts5.dart';
-import 'package:fire99/posts6.dart';
+
 
 class p2 extends StatelessWidget {
   String allposts;
@@ -93,14 +90,15 @@ class p2 extends StatelessWidget {
 
       body:
       Container(
-        color:Colors.white,
+
+        color:Colors.grey[850],
+
         child: Column(
             children: [
-
               SizedBox(
                 height:16,
               ),
-            /*  Padding(
+              /*  Padding(
                 padding: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
                 child: TextField(
                   controller: _searchController,
@@ -211,37 +209,51 @@ class p2 extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top:10),
+                padding: const EdgeInsets.only(top: 10),
                 child: CurvedNavigationBar(
-
-                    color:Colors.white,
-                    backgroundColor:Colors.grey[850],
+                    color: Colors.white,
+                    backgroundColor: Colors.black,
                     //buttonBackgroundColor:Colors.blue,
-                    items:<Widget>[
-
+                    items: <Widget>[
                       Icon(Icons.home,size:24,color:Colors.black),
                       Icon(Icons.add_box,size:24,color:Colors.red),
                       Icon(Icons.messenger_rounded,size:24,color:Colors.blue),
                       Icon(Icons.account_circle,size:24,color:Colors.purple),
                     ],
+                    animationCurve: Curves.bounceOut,
+                    onTap: (index) async {
+                      final user = FirebaseAuth.instance.currentUser;
+                      final userData = await Firestore.instance
+                          .collection('users')
+                          .doc(user.uid)
+                          .get();
+                      String ud=userData['email'];
+                      if(index == 0) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return Home();
+                            }));
+                      }
 
-                    animationCurve:Curves.bounceOut,
-                    onTap:(index){
 
-                      if(index==1)
-                      {
-                        Navigator.push(
-                            context,
+                      else  if (index == 1) {
+                        Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                               return AddPost();
                             }));
-
-
+                      } else if (index == 2) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return ChatScreen2(ud);
+                            }));
                       }
-
-                    }
-
-                ),
+                      else if (index == 3) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return profile(ud);
+                            }));
+                      }
+                    }),
               )
 
             ]),

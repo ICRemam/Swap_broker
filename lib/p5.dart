@@ -5,7 +5,11 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fire99/add_post.dart';
 import 'package:fire99/cat2.dart';
 import 'package:fire99/chat/cat.dart';
+import 'package:fire99/fchat/screens/chat_screen2.dart';
+import 'package:fire99/home.dart';
 import 'package:fire99/new.dart';
+import 'package:fire99/profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'actions.dart';
@@ -201,39 +205,51 @@ class p5 extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top:10),
+                padding: const EdgeInsets.only(top: 10),
                 child: CurvedNavigationBar(
-
-                    color:Colors.white,
-                    backgroundColor:Colors.grey[850],
+                    color: Colors.white,
+                    backgroundColor: Colors.black,
                     //buttonBackgroundColor:Colors.blue,
-                    items:<Widget>[
-
+                    items: <Widget>[
                       Icon(Icons.home,size:24,color:Colors.black),
                       Icon(Icons.add_box,size:24,color:Colors.red),
                       Icon(Icons.messenger_rounded,size:24,color:Colors.blue),
                       Icon(Icons.account_circle,size:24,color:Colors.purple),
                     ],
-
-                    animationCurve:Curves.bounceOut,
-                    onTap:(index){
-
-                      if(index==1)
-                      {
-                        Navigator.push(
-                            context,
+                    animationCurve: Curves.bounceOut,
+                    onTap: (index) async {
+                      final user = FirebaseAuth.instance.currentUser;
+                      final userData = await Firestore.instance
+                          .collection('users')
+                          .doc(user.uid)
+                          .get();
+                      String ud=userData['email'];
+                      if(index == 0) {
+                        Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                              return AddPost();
+                              return Home();
                             }));
-
-
                       }
 
 
-                    }
-
-
-                ),
+                      else  if (index == 1) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return AddPost();
+                            }));
+                      } else if (index == 2) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return ChatScreen2(ud);
+                            }));
+                      }
+                      else if (index == 3) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return profile(ud);
+                            }));
+                      }
+                    }),
               )
 
             ]),

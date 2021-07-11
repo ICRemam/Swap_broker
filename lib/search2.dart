@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Container(
                               padding: EdgeInsets.all(10),
                               height: 10,
-                              color: Colors.white10,
+                              color: Colors.grey[850],
                               width: MediaQuery.of(context).size.width / 1.1,
 
                             ),
